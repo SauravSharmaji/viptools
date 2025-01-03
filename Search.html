@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for VIP Followers, VIP Hearts, VIP Comments Hearts, Views, Shares, and Favorites. Find the best tools and services to boost your social media presence and engagement.">
+    <meta name="keywords" content="VIP Followers, VIP Hearts, VIP Comments Hearts, Views, Shares, Favorites, social media search, social media tools, online engagement tools">
+    <meta name="author" content="Your Name or Website Name">
+    <meta name="google-site-verification" content="Md9H8PCyt4aI0v0cSjsFlN1luzvrs7lzsFSq1tps3dA" />
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Search for VIP Followers, Hearts, Views & More">
+    <meta property="og:description" content="Use our search tool to find the best VIP Followers, VIP Hearts, Comments Hearts, Views, Shares, and Favorites to boost your social media engagement.">
+    <!-- <meta property="og:image" content="https://yourwebsite.com/path-to-image.jpg"> -->
+    <meta property="og:url" content="https://bollyflix.support/search">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Search for VIP Followers, Hearts, Views & More">
+    <meta name="twitter:description" content="Looking for the best VIP Followers, Hearts, Comments Hearts, Views, Shares, and Favorites? Use our search page to discover top-tier tools to boost your engagement.">
+    <!-- <meta name="twitter:image" content="https://yourwebsite.com/path-to-image.jpg"> -->
+    <title>Search VIP Followers, Hearts, Views & Shares - Enhance Your Social Media Engagement</title>
+        <title>Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <header class="bg-primary text-white text-center py-3">
+        <h1><a href="https://viptools.bollyflix.support/" class="text-white text-decoration-none">VIP Followers, Hearts, and More</a></h1>
+
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5 flex-grow-1">
+        <div>
+            <h2>Search</h2>
+            <input type="text" id="searchInput" class="form-control mb-3" placeholder="Enter search term">
+            <button class="btn btn-primary" onclick="handleSearch()">Search</button>
+            <p id="message" class="text-danger mt-3" style="display: none;"></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <p>&copy; 2025 bollyflix.support</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let cooldown = false;
+        let cooldownTime = 126; // 2 minutes and 6 seconds in seconds
+
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput').value.trim();
+            const messageElement = document.getElementById('message');
+
+            if (cooldown) {
+                messageElement.style.display = 'block';
+                const minutes = Math.floor(cooldownTime / 60);
+                const seconds = cooldownTime % 60;
+                messageElement.textContent = `Please wait ${minutes} minute(s) ${seconds} second(s) before trying again.`;
+                return;
+            }
+
+            if (searchInput) {
+                startCooldown();
+            } else {
+                messageElement.style.display = 'none';
+            }
+        }
+
+        function startCooldown() {
+            cooldown = true;
+            const messageElement = document.getElementById('message');
+            messageElement.style.display = 'block';
+
+            const interval = setInterval(() => {
+                cooldownTime--;
+                const minutes = Math.floor(cooldownTime / 60);
+                const seconds = cooldownTime % 60;
+                messageElement.textContent = `Please wait ${minutes} minute(s) ${seconds} second(s) before trying again.`;
+
+                if (cooldownTime <= 0) {
+                    clearInterval(interval);
+                    cooldown = false;
+                    cooldownTime = 126;
+                    messageElement.style.display = 'none';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
